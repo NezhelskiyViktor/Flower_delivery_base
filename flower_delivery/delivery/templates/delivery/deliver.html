@@ -12,12 +12,16 @@
 </head>
 <body>
     <aside>
-        <img src="{% static 'delivery/img/logo.png' %}" alt="Логотип" width="50px">
+        <img src="{% static 'delivery/img/Logo.png' %}" alt="Логотип" width="50px">
         {% include 'delivery/top.html' %}
         {% include 'delivery/navigation.html' %}
     </aside>
     <main>
         {% block content %}
+        <h1>Служба доставки цветов</h1>
+        <p>Это главная страница службы доставки цветов.</p>
+        <p> Выберите букет на странице "Просмотр каталога цветов"</p>
+        <p> Для оформления заказа переходите на страницу "Оформление заказа"</p>
         {% endblock %}
     </main>
 

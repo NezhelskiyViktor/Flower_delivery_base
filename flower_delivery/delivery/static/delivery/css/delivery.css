@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'BadScript';
+    src: url('../fonts/BadScript-Regular.ttf') format('truetype');
+}
+
+aside {
+    font-family: BadScript, cursive;
+    float: left;
+    width: 20%;
+    padding: 1.5%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #D3FEE3, white);
+}
+aside img {
+    width: 60px;
+    float: left;
+}
+aside .logo {
+    font-size: 30px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top: -5px;
+}
+aside h3 {
+    margin-top: 50px;
+    font-size: 25px;
+}
+aside li, aside a:link, aside a:visited {
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform .6s ease;
+}
+aside li:hover, aside a:hover {
+    transform: scale(1.15);
+}
+main {
+    background-image: url('../img/tekstura-akvarelnoi-bumagi1.jpg');
+    background-repeat: repeat-y;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    overflow: auto;
+}
+
+main .list {
+    text-align: left;
+    margin: auto;
+    width: 90%
+}
+
+main h3 {
+    text-decoration: underline;
+}

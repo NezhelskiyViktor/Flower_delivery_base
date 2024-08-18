@@ -16,3 +16,10 @@ class LoginForm(forms.Form):
     email = forms.EmailField(label='Электронная почта', max_length=255)
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
 
+
+class LoginByEmailForm(forms.Form):
+    email = forms.EmailField(label='Электронная почта', max_length=255)
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        return email

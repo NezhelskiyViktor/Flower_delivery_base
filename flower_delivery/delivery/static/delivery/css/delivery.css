@@ -49,5 +49,6 @@ main .list {
 }
 
 main h3 {
+    font-family: BadScript, cursive;
     text-decoration: underline;
 }

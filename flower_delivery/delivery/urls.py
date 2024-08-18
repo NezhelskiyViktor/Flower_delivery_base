@@ -7,5 +7,6 @@ from . import views
 urlpatterns = [
     path('', views.deliver_view, name='deliver'),
     path('registration', views.registration_view, name='registration'),
-    path('userlogin', views.user_login, name='user_login'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('login', views.login_view, name='login'),
+    path('viewsrec', views.viewsrec_view, name='viewsrec'),
+]  # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

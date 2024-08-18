@@ -32,7 +32,7 @@ def registration_view(request):
     return render(request, 'delivery/registration.html', {'form': form})
 
 
-def user_login(request):
+def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -48,3 +48,16 @@ def user_login(request):
         form = LoginForm()
 
     return render(request, 'login.html', {'form': form})
+
+
+def viewsrec_view(request):
+    users = User.objects.all()
+    products = Product.objects.all()
+    orders = Order.objects.all()
+
+    context = {
+        'users': users,
+        'products': products,
+        'orders': orders,
+    }
+    return render(request, 'delivery/viewsrec.html', context)

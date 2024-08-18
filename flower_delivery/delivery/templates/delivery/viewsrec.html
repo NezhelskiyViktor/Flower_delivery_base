@@ -1,0 +1,28 @@
+{% extends 'delivery/deliver.html' %}
+
+{% block content %}
+<h3>Просмотр записей</h3>
+
+<h5>Пользователи:</h5>
+{% for user in users %}
+<p><strong>{{ user.name }}</strong> (e-mail: <strong>{{ user.email }}</strong>)</p>
+{% endfor %}
+
+<h5>Продукты:</h5>
+{% for product in products %}
+<p><strong>{{ product.title }}</strong> (цена: <strong>{{ product.price }}</strong>)</p>
+{% endfor %}
+
+<h5>Заказы:</h5>
+{% for order in orders %}
+<p><strong>Заказ ID:</strong> {{ order.id }} для покупателя <strong>{{ order.user.name }}</strong>:
+            {% for product in order.products.all %}
+                <strong>{{ product.title }}</strong>,
+            {% empty %}
+                <strong>Нет букетов</strong>
+            {% endfor %}
+</p>
+{% empty %}
+    <p>Нет заказов.</p>
+{% endfor %}
+{% endblock %}

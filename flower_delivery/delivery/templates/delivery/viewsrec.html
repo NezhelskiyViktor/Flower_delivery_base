@@ -1,4 +1,5 @@
 {% extends 'delivery/deliver.html' %}
+{% load custom_filters %}
 
 {% block content %}
 <h3>Просмотр записей</h3>
@@ -8,21 +9,24 @@
 <p><strong>{{ user.name }}</strong> (e-mail: <strong>{{ user.email }}</strong>)</p>
 {% endfor %}
 
-<h5>Продукты:</h5>
+<h5>Букеты:</h5>
 {% for product in products %}
 <p><strong>{{ product.title }}</strong> (цена: <strong>{{ product.price }}</strong>)</p>
 {% endfor %}
 
 <h5>Заказы:</h5>
 {% for order in orders %}
-<p><strong>Заказ ID:</strong> {{ order.id }} для покупателя <strong>{{ order.user.name }}</strong>:
-            {% for product in order.products.all %}
-                <strong>{{ product.title }}</strong>,
-            {% empty %}
-                <strong>Нет букетов</strong>
-            {% endfor %}
+<p>
+    <strong>Заказ ID:</strong> {{ order.id }} для покупателя <strong>{{ order.user.name }}</strong>:
+    {% for product in order.products.all %}
+        <strong>{{ product.title }}</strong>{% if not forloop.last %}, {% endif %}
+    {% empty %}
+        <strong>Нет букетов</strong>
+    {% endfor %}
+    <strong> | Итого: {{  order_prices|get_item:order.id|floatformat:2 }} руб.</strong>
 </p>
 {% empty %}
     <p>Нет заказов.</p>
 {% endfor %}
+<strong>Итого: {{ allprice }} руб.</strong>
 {% endblock %}

@@ -4,29 +4,34 @@
 {% block content %}
 <h3>Просмотр записей</h3>
 
-<h5>Пользователи:</h5>
-{% for user in users %}
-<p><strong>{{ user.name }}</strong> (e-mail: <strong>{{ user.email }}</strong>)</p>
-{% endfor %}
-
-<h5>Букеты:</h5>
-{% for product in products %}
-<p><strong>{{ product.title }}</strong> (цена: <strong>{{ product.price }}</strong> руб.)</p>
-{% endfor %}
-
 <h5>Заказы:</h5>
 {% for order in orders %}
 <p>
-    <strong>Заказ ID:</strong> {{ order.id }} для покупателя <strong>{{ order.user.name }}</strong>:
+    <strong>Заказ ID:</strong> {{ order.id }} для <strong>{{ order.user.name }}</strong>:
     {% for product in order.products.all %}
-        <strong>{{ product.title }}</strong>{% if not forloop.last %}, {% endif %}
+        <br><strong>{{ product.title }}</strong>{% if not forloop.last %}, {% endif %}
     {% empty %}
         <strong>Нет букетов</strong>
     {% endfor %}
-    <strong> | Итого: {{  order_prices|get_item:order.id|floatformat:2 }} руб.</strong>
+    <br><strong>Итого: {{  order_prices|get_item:order.id|floatformat:2 }} руб.</strong>
 </p>
 {% empty %}
     <p>Нет заказов.</p>
 {% endfor %}
 <strong>Итого: {{ allprice }} руб.</strong>
+
+<h5>Закачики:</h5>
+{% for user in users %}
+<p><strong>{{ user.name }}</strong> (e-mail: <strong>{{ user.email }}</strong>)</p>
+{% empty %}
+    <p>Нет заказчиков.</p>
+{% endfor %}
+
+<h5>Букеты:</h5>
+{% for product in products %}
+<p><strong>{{ product.title }}</strong> (цена: <strong>{{ product.price }}</strong> руб.)</p>
+{% empty %}
+    <p>Нет букетов.</p>
+{% endfor %}
+
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'delivery/deliver.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container">
+    <h3>Заказ букетов цветов для {{ user_name }}</h3>
+    <h2>Выбранные букеты:</h2>
+    <ul>
+        {% for product in selected_products %}
+            <li>{{ product.title }} - {{ product.price }} руб.</li>
+        {% endfor %}
+    </ul>
+    <h3>Сумма заказа: {{ total_price }} руб.</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Оформить заказ</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'delivery/deliver.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container">
+    <h3>Каталог цветов</h3>
+    {% if user is not None %}
+    <p> {{user}}, выберите букеты для оформления заказа:</p>
+    {% endif %}
+    <form method="POST" action="{% url 'catalog' %}">
+        {% csrf_token %}
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <!-- <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}"> -->
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.title }}</h5>
+                        <p class="card-text">{{ product.price }} руб.</p>
+                        {% if user is not None %}
+                            <input type="checkbox" name="selected_products" value="{{ product.title }}"> Выбрать
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if user is not None %}
+            <button type="submit" class="btn btn-primary">Заказать</button>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

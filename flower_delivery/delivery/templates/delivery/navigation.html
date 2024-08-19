@@ -2,10 +2,12 @@
 <h3>Навигация</h3>
 <ul>
     <li><a href="{% url 'deliver' %}">Главная</a></li>
-    <li><a href="{% url 'entrance' %}">Вход</a></li>
-    <li><a href="{% url 'exit' %}">Выход</a></li>
+        {% if user is not None %}
+            <li><a href="{% url 'exit' %}">Выход</a></li>
+        {% else %}
+            <li><a href="{% url 'entrance' %}">Вход</a></li>
+        {% endif %}
     <li><a href="{% url 'registration' %}">Регистация</a></li>
-    <li><a href="">Просмотр каталога цветов</a></li>
-    <li><a href="">Оформление заказа</a></li>
+    <li><a href="{% url 'catalog' %}">Каталог цветов</a></li>
     <li><a href="{% url 'viewsrec' %}">Просмотр записей</a></li>
 </ul>

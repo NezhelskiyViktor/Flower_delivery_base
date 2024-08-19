@@ -10,4 +10,6 @@ urlpatterns = [
     path('entrance', views.entrance_view, name='entrance'),
     path('viewsrec', views.viewsrec_view, name='viewsrec'),
     path('exit', views.exit_view, name='exit'),
+    path('catalog', views.catalog_view, name='catalog'),
+    path('order', views.order_view, name='order'),
 ]  # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

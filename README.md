@@ -45,17 +45,17 @@
 
 ### Структура базы данных [models.py](flower_delivery/Fdelivery/Fmodels.py)
 
-| <u>User                           |
+| User                           |
 |-----------------------------------|
 | <strong>name "Имя"                |
 | <strong>emali "Электронная почта" |
 
-| <u>Product            |
+| Product            |
 |-----------------------|
 | <strong>title "Букет" |
 | <strong>pice "Цена"   |
 
-| <u>Order                                        |
+| Order                                        |
 |----------------------------------------------|
 | <strong>user "Покупатель" [ForeignKey(User)]         |
 | <strong>products "Букеты" [ManyToManyField(Product)] |
@@ -79,4 +79,4 @@
 #### Страница оформления заказа
 ![shot7.jpg](shot7.jpg)
 #### Чат Telegram бота при поступлении заказа
-
+![shot8.jpg](shot8.jpg)

@@ -159,7 +159,7 @@ def order_view(request):
             send_message(f'{order} | '
                   f'Почта: {email} | '
                   f'Список букетов: {selected_products_titles} | '
-                  f'Сумма заказа: {total_price} | '
+                  f'Сумма заказа: {total_price}₽ | '
                   f'Адрес доставки: {address}')
 
             local_time = timezone.now().astimezone(pytz.timezone('Europe/Moscow'))

@@ -5,9 +5,15 @@
         {% if user is not None %}
             <li><a href="{% url 'exit' %}">Выход</a></li>
         {% else %}
-            <li><a href="{% url 'entrance' %}">Вход</a></li>
+            {% if is_open %}
+                <li><a href="{% url 'entrance' %}">Вход</a></li>
+            {% else %}
+                <li><span style="color: gray;">Вход (закрыто)</span></li>
+            {% endif %}
         {% endif %}
-    <li><a href="{% url 'registration' %}">Регистация</a></li>
+        {% if is_open %}
+            <li><a href="{% url 'registration' %}">Регистация</a></li>
+        {% endif %}
     <li><a href="{% url 'catalog' %}">Каталог цветов</a></li>
     <li><a href="{% url 'viewsrec' %}">Просмотр записей</a></li>
 </ul>

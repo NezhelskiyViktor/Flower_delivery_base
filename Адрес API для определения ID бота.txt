@@ -1,0 +1,6 @@
+https://api.telegram.org/bot7015484639:AAFkl3JPI_mz65PY6_yzU9rjEEG85w-y-Vs/getUpdates
+в общем виде
+https://api.telegram.org/bot TOKEN /getUpdates
+
+ID искать здесь:
+"chat": {"id": 5194169190,

@@ -1,4 +1,4 @@
-https://api.telegram.org/bot7015484639:AAFkl3JPI_mz65PY6_yzU9rjEEG85w-y-Vs/getUpdates
+https://api.telegram.org/bot7084493625:AAG6iPi3dadwVx4NvlWkncNteh8ZMmVmIh4/getUpdates
 в общем виде
 https://api.telegram.org/bot TOKEN /getUpdates
 

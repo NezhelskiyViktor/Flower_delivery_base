@@ -45,26 +45,26 @@
 
 ### Структура базы данных [models.py](flower_delivery/Fdelivery/Fmodels.py)
 
-| User                           |
-|-----------------------------------|
-| <strong>name "Имя"                |
-| <strong>emali "Электронная почта" |
+| User                                       |
+|--------------------------------------------|
+| <strong>name</strong> "Имя"                |
+| <strong>emali</strong> "Электронная почта" |
 
-| Product            |
-|-----------------------|
-| <strong>title "Букет" |
-| <strong>pice "Цена"   |
+| Product                        |
+|--------------------------------|
+| <strong>title</strong> "Букет" |
+| <strong>pice</strong> "Цена"   |
 
-| Order                                        |
-|----------------------------------------------|
-| <strong>user "Покупатель" [ForeignKey(User)]         |
-| <strong>products "Букеты" [ManyToManyField(Product)] |
+| Order                                                         |
+|---------------------------------------------------------------|
+| <strong>user</strong> "Покупатель" [ForeignKey(User)]         |
+| <strong>products</strong> "Букеты" [ManyToManyField(Product)] |
 
 
 ### Реализация интерфейса
 
 #### Домашняя страница в нерабочее время
-
+![shot0.jpg](shot0.jpg)
 #### Домашняя страница в рабочее время
 ![shot1.jpg](shot1.jpg)
 ![shot2.jpg](shot2.jpg)

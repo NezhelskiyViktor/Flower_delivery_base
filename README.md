@@ -47,16 +47,19 @@
 
 | User                                       |
 |--------------------------------------------|
+| <strong>ID</strong>                        |
 | <strong>name</strong> "Имя"                |
 | <strong>emali</strong> "Электронная почта" |
 
 | Product                        |
 |--------------------------------|
+| <strong>ID</strong>                        |
 | <strong>title</strong> "Букет" |
 | <strong>pice</strong> "Цена"   |
 
 | Order                                                         |
 |---------------------------------------------------------------|
+| <strong>ID</strong>                        |
 | <strong>user</strong> "Покупатель" [ForeignKey(User)]         |
 | <strong>products</strong> "Букеты" [ManyToManyField(Product)] |
 

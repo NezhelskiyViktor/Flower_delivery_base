@@ -9,7 +9,7 @@ aside {
     width: 20%;
     padding: 1.5%;
     height: 100vh;
-    background: linear-gradient(to bottom, #D3FEE3, white);
+    background: url('../img/tekstura-akvarelnoi-bumagi1.jpg');
 }
 aside img {
     width: 60px;
@@ -35,7 +35,7 @@ aside li:hover, aside a:hover {
     transform: scale(1.15);
 }
 main {
-    background-image: url('../img/tekstura-akvarelnoi-bumagi1.jpg');
+    background-image: linear-gradient(to bottom, #D3FEE3, white);
     background-repeat: repeat-y;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;

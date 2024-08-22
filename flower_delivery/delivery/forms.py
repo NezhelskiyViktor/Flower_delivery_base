@@ -39,3 +39,8 @@ class DeliveryAddressForm(forms.Form):
         max_length=255,
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите адрес доставки'})
     )
+    text = forms.CharField(
+        label='Комментарий к заказу',
+        required=False,
+        widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите комментарий (необязательно)', 'rows': 3})
+    )

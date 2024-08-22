@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import User
 from .forms import UserRegistrationForm, LoginByEmailForm, LoginForm, DeliveryAddressForm
 from .telebot.message_to_bot import send_message
+from datetime import datetime
 
 TIME = (8, 23)
 
@@ -45,7 +46,11 @@ def registration_view(request):
         form = UserRegistrationForm(request.POST)  # Инициализация формы
         if form.is_valid():  # Проверка формы
             form.save()  # Сохранение формы
-            messages.success(request, 'Пользователь успешно зарегистрирован!')
+            email = form.cleaned_data['email']  # Получить email из формы
+            buyer = get_object_or_404(User, email=email)  # Поиск пользователя по email
+            request.session['email'] = email  # запомнить email в сессии
+            request.session['buyer'] = buyer.name  # запомнить имя пользователя в сессии
+            # messages.success(request, 'Пользователь успешно зарегистрирован!')
             return redirect('catalog')  # Перенаправление на страницу каталога
     else:
         form = UserRegistrationForm()  # Инициализация формы
@@ -62,7 +67,7 @@ def entrance_view(request):
             buyer = get_object_or_404(User, email=email)  # Поиск пользователя по email
             request.session['email'] = email  # запомнить email в сессии
             request.session['buyer'] = buyer.name  # запомнить имя пользователя в сессии
-            messages.success(request, f'{buyer.name}, Вы успешно вошли в систему!')
+            # messages.success(request, f'{buyer.name}, Вы успешно вошли в систему!')
             return redirect('catalog')  # Перенаправление на страницу каталога
     else:
         form = LoginForm()  # Инициализация формы
@@ -151,16 +156,20 @@ def order_view(request):
         form = DeliveryAddressForm(request.POST)
         if form.is_valid():
             address = form.cleaned_data['address']
+            text = form.cleaned_data['text']
+            formatted_date_time = datetime.now().strftime("%H:%M %d.%m.%Y")
+
             # Здесь можно создать заказ и сохранить его в БД
             order = Order.objects.create(user=user)
             order.products.set(selected_products)
             order.save()
+            text_for_bot = (f'{formatted_date_time} |{order} | Список букетов: {selected_products_titles} | '
+                   f'Сумма заказа: {total_price}₽ | Адрес доставки: {address} | ')
 
-            send_message(f'{order} | '
-                  f'Почта: {email} | '
-                  f'Список букетов: {selected_products_titles} | '
-                  f'Сумма заказа: {total_price}₽ | '
-                  f'Адрес доставки: {address}')
+            if text != '':
+                text_for_bot += f'{text}'
+
+            send_message(text_for_bot)
 
             local_time = timezone.now().astimezone(pytz.timezone('Europe/Moscow'))
             global TIME

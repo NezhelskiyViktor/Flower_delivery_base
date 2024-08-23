@@ -82,5 +82,6 @@
 ![shot5.jpg](shot5.jpg)
 #### Страница оформления заказа
 ![shot7.jpg](shot7.jpg)
-#### Чат Telegram бота при поступлении заказа в магазин
+#### Чат Telegram бот
+https://t.me/FlowerDeliverBot
 
